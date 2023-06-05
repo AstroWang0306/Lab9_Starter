@@ -193,6 +193,16 @@
     errorBtns[13].addEventListener('click', () => {
       throw new Error('This is a global error.');
     });
+    
+    // Trigger a Global Error
+    errorBtns[13].addEventListener('click', () => {
+      try {
+        // Simulating an unexpected error by calling a nonexistent function
+        aintGonnaWork();
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    });
 
     
   </script>
