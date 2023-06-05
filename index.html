@@ -194,11 +194,28 @@
       throw new Error('This is a global error.');
     });
     
+    // Custom Error Class
+    class CustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'CustomError';
+      }
+    }
+    
     // Trigger a Global Error
     errorBtns[13].addEventListener('click', () => {
       try {
         // Simulating an unexpected error by calling a nonexistent function
         aintGonnaWork();
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    });
+    
+    // Trigger a custom Error
+    errorBtns[13].addEventListener('click', () => {
+      try {
+        throw new CustomError('This is a custom error.');
       } catch (error) {
         console.error('An error occurred:', error);
       }
